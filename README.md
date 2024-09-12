@@ -21,12 +21,15 @@ pip install -r requirements.txt
 
 ### Data Release
 
-We put the models and data on HuggingFace: [insert link]. Please download all files from the link and place them here. 
+We put the models and data on HuggingFace. Please download all files from the link and place them here. 
+
+```shell
+git lfs install
+git clone https://huggingface.co/Ethan4090/NB-LLM
+```
+
+
 <!--Once completed, the complete file structure should be as follows: . -->
-
-
-
-
 
 `./sys_content/` and `./instruction/` include the prompts and instructions  used in NB-LLM. Please select or modify them according to your needs. We recommend storing the result files  in  `./result/` .
 
