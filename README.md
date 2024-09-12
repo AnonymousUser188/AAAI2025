@@ -8,7 +8,7 @@ While existing LLM-based methods consider triples in knowledge graphs (KGs) as t
 Additionally, we clarify the details of the tasks and problem statements through customized prompts and instructions, which guide LLMs in the reasoning processes and responses to KGC queries. At last, we employ LLMs to summarize the responses succinctly from NB-LLM to get final answers. Notably, our model is fine-tuned based on a significantly smaller data scale than previous works, benefiting from integrating comprehensive neighborhood information and precise prompts and instructions. Experiments on various knowledge graph benchmarks reveal that NB-LLM achieves new SOTA in two KGC tasks (*i.e.*, triple classification and relation prediction), and even surpasses LLMs fine-tuned with up to 10 times the data volume of our experiments.
 
 <div align="center">
-<img src="pics\overall_fig3.png" width=0.9>
+<img src="pics\overall_fig3.png" width="90%">
 </div>
 
 ## Getting Start
