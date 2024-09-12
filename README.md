@@ -31,7 +31,7 @@ git clone https://huggingface.co/Ethan4090/NB-LLM
 
 <!--Once completed, the complete file structure should be as follows: . -->
 
-`./sys_content/` and `./instruction/` include the prompts and instructions  used in NB-LLM. Please select or modify them according to your needs. We recommend storing the result files  in  `./result/` .
+`./sys_content/`  includes the prompts and instructions  used in NB-LLM. Please select or modify them according to your needs. We recommend storing the result files  in  `./result/` .
 
 
 ### How to run
