@@ -26,10 +26,7 @@ parser.add_argument('--top_p', type=float, default=0.75, help='Top p value for n
 parser.add_argument('--top_k', type=int, default=40, help='Top k value for nucleus sampling')
 parser.add_argument('--num_beams', type=int, default=4, help='Number of beams for beam search')
 parser.add_argument('--max_new_tokens', type=int, default=512, help='Maximum number of new tokens to generate')
-
-
 args = parser.parse_args()
-
 
 model_id = args.model_id
 test_file = args.test_file
@@ -39,19 +36,11 @@ with open(args.system_content, 'r', encoding='utf-8') as sys_cont_file:
     system_content = sys_cont_file.read()
 
 home_dir = os.path.expanduser('~')
-
-
-
-
 do_int8 = "store_true"
 low_cpu_mem_usage = True
 port = 12333
 
 res_file = test_file.split(".")[0].replace("data", "output")+"-"+model_id.split("/")[-1]+"-"+str(time.strftime('%m%d_%H%M',time.localtime())) +".csv"
-
-
-
-
 
 pipe = pipeline(
     "text-generation",
@@ -64,7 +53,6 @@ pipe = pipeline(
     num_beams=args.num_beams,
     max_new_tokens=args.max_new_tokens
 )
-
 
 terminators = [
     pipe.tokenizer.eos_token_id,
@@ -97,7 +85,6 @@ with open(test_file, "r", encoding="utf-8") as f:
         )
         # print(response)
         ans = response[0]["generated_text"][-1]["content"].lower()
-
         count += 1
         label = tmp[1]
         # if ans.find("yes") != -1 and label == "1":
@@ -110,24 +97,13 @@ with open(test_file, "r", encoding="utf-8") as f:
         # print("---------------------------")
         # print(ans)
         # print(label)
-
         lines_to_write.append(prompt+"\t"+ans.replace("\n",".")+"\t"+ label+"\n")
-
-
-
-
-
 with open(res_file, "w", encoding="utf-8") as f:
     f.writelines(lines_to_write)
 
-
-
-
-
-
-print("# ", model_id)
-print("# ", system_content)
-print("# ", test_file)
-print("# ", res_file)
-print("# ", len(lines), count, correct_count)
-print("# ", correct_count/count)
+# print("# ", model_id)
+# print("# ", system_content)
+# print("# ", test_file)
+# print("# ", res_file)
+# print("# ", len(lines), count, correct_count)
+# print("# ", correct_count/count)
