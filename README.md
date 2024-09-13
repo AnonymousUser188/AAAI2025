@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ### Data Release
 
-We put the models and data on HuggingFace. Please download all files from the link and place them here. 
+We put the models and data on HuggingFace. Please download all files and place them here. 
 
 ```shell
 git lfs install
