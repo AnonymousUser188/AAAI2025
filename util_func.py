@@ -160,9 +160,6 @@ def get_txt(filename, position_a, position_b):
 
 
 
-# ======================================================================
-# 随机抽取（1）json项（2）csv行，并保留第一行，抽取后面的n行
-# ======================================================================
 def random_choose(filename, num):
     if filename.split(".")[-1] == "json":
         json_file_path = filename
@@ -174,36 +171,24 @@ def random_choose(filename, num):
 
         res = json_file_path.split(".")[0]+"_"+str(sample_lines_num)+".json"
         
-        with open(res, 'w', encoding='utf-8') as file: # 将随机选中的项写回到新的JSON文件
+        with open(res, 'w', encoding='utf-8') as file: 
             json.dump(random_items, file, ensure_ascii=False, indent=4)
 
-        print(f"已成功抽取{num}项，并保存到{res}")
+        print(f"get {num} items and saved to {res}")
     elif filename.split(".")[-1] == "csv":
         n = num  
-
-        # 定义文件路径
-        input_file_path = filename  # 你的CSV文件路径
-        output_file_path = input_file_path.split('.')[0]+ '_'+str(n)+'.csv'  # 输出文件路径
-
-        # 读取CSV文件并随机抽取n行
+        input_file_path = filename  
+        output_file_path = input_file_path.split('.')[0]+ '_'+str(n)+'.csv'  
         with open(input_file_path, mode='r', newline='', encoding='utf-8') as csvfile:
             csvreader = csv.reader(csvfile)
-            first_row = next(csvreader) # 读取第一行并存储
-            remaining_rows = list(csvreader) # 读取剩余的行并存储在一个列表中
-            
-            # 随机抽取n行
+            first_row = next(csvreader) 
+            remaining_rows = list(csvreader) 
             selected_rows = random.sample(remaining_rows, n) if len(remaining_rows) >= n else random.sample(remaining_rows, len(remaining_rows))
-
-        # 将第一行和随机抽取的行写入新文件
         with open(output_file_path, mode='w', newline='', encoding='utf-8') as csvfile:
             csvwriter = csv.writer(csvfile)
-            
-            # 写入第一行
             csvwriter.writerow(first_row)
-            
-            # 写入随机抽取的行
             csvwriter.writerows(selected_rows)
 
-        print(f"已成功抽取{len(selected_rows)}行，并保存到{output_file_path}")
+        print(f"get {len(selected_rows)} lines and saved to {output_file_path}")
     else:
-        print("文件不支持")
+        print("wrong file")
