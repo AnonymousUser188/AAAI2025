@@ -90,12 +90,7 @@ with open(test_file, "r", encoding="utf-8") as f:
         #     correct_count += 1
         # elif (ans.find("false") != -1 or ans.find("not") != -1 or ans.find("n't") != -1 or ans.find("no") != -1) and label == "-1":
         #     correct_count += 1
-        # print(prompt)
-        # print("---------------------------")
-        # print("\n",correct_count/count,"\n")
-        # print("---------------------------")
-        # print(ans)
-        # print(label)
+        # print(prompt,"\n",correct_count/count,"\n",ans, label)
         lines_to_write.append(prompt+"\t"+ans.replace("\n",".")+"\t"+ label+"\n")
 with open(res_file, "w", encoding="utf-8") as f:
     f.writelines(lines_to_write)
